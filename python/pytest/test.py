@@ -1,18 +1,13 @@
 
-@pytest.fixture()
-def db():
-    print('Connection successful')
 
-    yield
+#!/usr/bin/env python3
 
-    print('Connection closed')
+import pytest
 
-def search_user(user_id):
-    d = {
-        '001': 'xiaoming'
-    }
-    return d[user_id]
+@pytest.fixture
+def data():
 
+    return [3, 2, 1, 5, -3, 2, 0, -2, 11, 9]
 
-def test_search(db):
-    assert search_user('001') == 'xiaoming'
+def test_fixture(data):
+    assert len(data) == 10
